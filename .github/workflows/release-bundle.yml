@@ -24,7 +24,12 @@ jobs:
 
       - name: Build deploy bundle
         run: |
-          python deploy_toolkit/scripts/package_bundle.py
+          if [ -f deploy_toolkit/scripts/package_bundle.py ]; then
+            python deploy_toolkit/scripts/package_bundle.py
+          else
+            echo "Packager script missing in this ref; using git archive fallback"
+            git archive -o deploy_bundle.zip --format=zip HEAD
+          fi
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
