@@ -12,7 +12,7 @@
 
 ## Analyst Toolkit Starter Kit
 
-Starter repo to deploy and use the Analyst Toolkit fast. It includes a deployment bundle (`deploy_toolkit.zip`) and docs to scaffold a project, ingest a CSV, infer starter configs locally (no AI, no network), and run via notebook or CLI.
+Starter repo to deploy and use the Analyst Toolkit fast. It includes a deployment bundle (`deploy_toolkit.zip`) and docs to scaffold a project, ingest a CSV, infer starter configs locally, and run via notebook or CLI.
 
 👀 [`Checkout the Analyst Toolkit`](https://github.com/G-Schumacher44/analyst_toolkit) on GitHub
 
