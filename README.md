@@ -8,6 +8,10 @@
   <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-blue">
   <img alt="Status" src="https://img.shields.io/badge/status-active-brightgreen">
   <img alt="Version" src="https://img.shields.io/badge/version-v0.2.1-blueviolet">
+  <a href="https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest/download/deploy_toolkit.zip">
+    <img alt="Download Bundle" src="https://img.shields.io/badge/download-deploy__toolkit.zip-blue?logo=github">
+  </a>
+  
 </p>
 
 ## Analyst Toolkit Starter Kit
@@ -18,7 +22,9 @@ Starter repo to deploy and use the Analyst Toolkit fast. It includes a deploymen
 
 ## 🧩 TL;DR
 
-- Download latest bundle from Releases: https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest
+- One‑click download (latest): https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest/download/deploy_toolkit.zip
+- Or browse Releases: https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest
+- Or grab the CI artifact (latest run): https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/actions/workflows/release-bundle.yml
 - Unzip `deploy_toolkit.zip` at repo root
 - Create env: `conda env create -f environment.yml && conda activate analyst-toolkit`
 - Put a CSV at repo root or `data/raw/`
@@ -62,8 +68,13 @@ Inside `deploy_toolkit.zip` (after unzipping at repo root):
 <details>
 <summary><strong>⬇️ Get the Bundle</strong></summary>
 
-- Download the latest deployment zip from Releases:
+- One‑click download (latest):
+  https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest/download/deploy_toolkit.zip
+- Or view Releases page:
   https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest
+- Or download the workflow artifact (deploy_bundle) from Actions:
+  https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/actions/workflows/release-bundle.yml
+  (open the latest successful run and download the artifact)
 - Or build locally: `make -f deploy_toolkit/Makefile_master package`
 
 </details>
