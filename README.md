@@ -18,13 +18,14 @@
 
 Starter repo to deploy and use the Analyst Toolkit fast. It includes a deployment bundle (`deploy_toolkit.zip`) and docs to scaffold a project, ingest a CSV, infer starter configs locally, and run via notebook or CLI.
 
+[⬇️ `Download the latest bundle.zip(CI artifact)`](https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/actions/runs/17362587821)
+
 👀 [`Checkout the Analyst Toolkit`](https://github.com/G-Schumacher44/analyst_toolkit) on GitHub
 
 ## 🧩 TL;DR
 
-- One‑click download (latest): https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest/download/deploy_toolkit.zip
-- Or browse Releases: https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest
-- Or grab the CI artifact (latest run): https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/actions/workflows/release-bundle.yml
+- [`Check out the all of the Deployable Bundles`](https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/actions)
+- [`Browse Releases`](https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest)
 - Unzip `deploy_toolkit.zip` at repo root
 - Create env: `conda env create -f environment.yml && conda activate analyst-toolkit`
 - Put a CSV at repo root or `data/raw/`
