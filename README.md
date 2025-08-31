@@ -18,7 +18,8 @@
 
 Starter repo to deploy and use the Analyst Toolkit fast. It includes a deployment bundle (`deploy_toolkit.zip`) and docs to scaffold a project, ingest a CSV, infer starter configs locally, and run via notebook or CLI.
 
-[⬇️ `Download the latest bundle.zip(CI artifact)`](https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/actions/runs/17362587821)
+⬇️ One‑click download (latest): https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest/download/deploy_toolkit.zip
+   (versioned v0.2.3: https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/download/v0.2.3/deploy_toolkit.zip)
 
 👀 [`Checkout the Analyst Toolkit`](https://github.com/G-Schumacher44/analyst_toolkit) on GitHub
 
