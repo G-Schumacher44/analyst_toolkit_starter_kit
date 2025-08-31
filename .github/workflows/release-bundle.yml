@@ -52,6 +52,12 @@ jobs:
           name: deploy_bundle
           path: .
 
+      - name: Rename asset for release
+        run: |
+          ls -lh || true
+          if [ -f deploy_bundle.zip ]; then mv -f deploy_bundle.zip deploy_toolkit.zip; fi
+          ls -lh || true
+
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         env:
@@ -62,5 +68,5 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            deploy_bundle.zip#deploy_toolkit.zip
+            deploy_toolkit.zip
           generate_release_notes: true
