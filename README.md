@@ -70,11 +70,14 @@ Inside `deploy_toolkit.zip` (after unzipping at repo root):
 
 - One‑click download (latest):
   https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest/download/deploy_toolkit.zip
+
 - Or view Releases page:
   https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest
+
 - Or download the workflow artifact (deploy_bundle) from Actions:
   https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/actions/workflows/release-bundle.yml
   (open the latest successful run and download the artifact)
+
 - Or build locally: `make -f deploy_toolkit/Makefile_master package`
 
 </details>
@@ -107,6 +110,11 @@ This produces a fresh zip while excluding data/ and exports/.
 <details>
 <summary><strong>🫆 Version Release Notes</strong></summary>
 
+v0.2.3 * v0.2.4
+- bug fixes in workflow and artifact generation
+- documentation updates
+- *fixed artifact downloads*
+  
 v0.2.1
 - Cross-platform packaging (Python-based; no external zip needed)
 - Windows support: `setup.cmd`, `py -3` fallback, Git Bash guidance
