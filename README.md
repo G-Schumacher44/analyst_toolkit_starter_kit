@@ -7,7 +7,7 @@
 <p align="center">
   <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-blue">
   <img alt="Status" src="https://img.shields.io/badge/status-active-brightgreen">
-  <img alt="Version" src="https://img.shields.io/badge/version-v0.2.0-blueviolet">
+  <img alt="Version" src="https://img.shields.io/badge/version-v0.2.1-blueviolet">
 </p>
 
 ## Analyst Toolkit Starter Kit
@@ -18,6 +18,7 @@ Starter repo to deploy and use the Analyst Toolkit fast. It includes a deploymen
 
 ## 🧩 TL;DR
 
+- Download latest bundle from Releases: https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest
 - Unzip `deploy_toolkit.zip` at repo root
 - Create env: `conda env create -f environment.yml && conda activate analyst-toolkit`
 - Put a CSV at repo root or `data/raw/`
@@ -59,6 +60,29 @@ Inside `deploy_toolkit.zip` (after unzipping at repo root):
 </details>
 
 <details>
+<summary><strong>⬇️ Get the Bundle</strong></summary>
+
+- Download the latest deployment zip from Releases:
+  https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest
+- Or build locally: `make -f deploy_toolkit/Makefile_master package`
+
+</details>
+
+<details>
+<summary><strong>ℹ️ About the <code>deploy_toolkit</code> folder</strong></summary>
+
+The <code>deploy_toolkit/</code> folder in this repo is the versioned source/sample of the deployment bundle. When you unzip the bundle into your own project, Git ignores the entire <code>deploy_toolkit/</code> folder (and zip files) by default, so you can leave it in place without cluttering your repo.
+
+To rebuild the bundle locally from this repo:
+
+```bash
+make -f deploy_toolkit/Makefile_master package
+```
+
+This produces a fresh zip while excluding data/ and exports/.
+</details>
+
+<details>
 <summary>📐 What’s Included</summary>
 
 - `deploy_toolkit.zip` — deployment bundle (see above)
@@ -71,6 +95,13 @@ Inside `deploy_toolkit.zip` (after unzipping at repo root):
 
 <details>
 <summary><strong>🫆 Version Release Notes</strong></summary>
+
+v0.2.1
+- Cross-platform packaging (Python-based; no external zip needed)
+- Windows support: `setup.cmd`, `py -3` fallback, Git Bash guidance
+- Root `Makefile` delegator; direct `-f Makefile_master` fallback in docs
+- `.gitignore` ignores `deploy_toolkit/` and zips by default
+- Release workflow attaches `deploy_toolkit.zip` to tagged releases
 
 v0.2.0
 - First public Starter Kit
@@ -128,6 +159,17 @@ pip install -r requirements.txt
 Notes
 - The toolkit package is installed from GitHub as a dependency.
 - Data and exports are git‑ignored by default; use `.env.example` to set run defaults if needed.
+
+Windows Notes
+- Recommended: use WSL (Ubuntu) and follow Linux steps inside WSL.
+- Native Windows: use Git Bash + Make + Python 3/Conda on PATH.
+  - Install Git for Windows (includes Git Bash)
+  - Install Make (e.g., `choco install make` or `scoop install make`)
+  - Ensure `python` (or `py -3`) works in your shell
+  - Easiest: run `setup.cmd` from CMD/PowerShell (opens Git Bash and runs the bootstrap)
+  - Or run `make setup` at repo root, or call the bootstrapper directly:
+    - `bash deploy_toolkit/scripts/bootstrap.sh --env conda --name analyst-toolkit --copy-notebook --generate-configs --run-smoke`
+  - Packaging is cross‑platform now (no external `zip` required)
 ___
 
 ## 🤝 On Generative AI Use

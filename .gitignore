@@ -34,3 +34,8 @@ coverage/
 
 # Editor settings
 .vscode/
+
+# Deployment bundle
+deploy_toolkit/
+deploy_toolkit.zip
+deploy_bundle.zip

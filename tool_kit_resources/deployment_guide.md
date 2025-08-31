@@ -16,6 +16,13 @@ This guide shows how to unzip the deployment bundle, scaffold a project, auto‑
 - Make available (`make --version`)
 - Network access if you’re not using offline installs
 
+Windows
+- Best experience: WSL (Ubuntu). Run all commands inside WSL.
+- Native Windows: use Git Bash + Make + Python 3/Conda on PATH. If `make` is missing, either use the provided `setup.cmd` from CMD/PowerShell, install Make, or call the master makefile explicitly:
+  - `make -f deploy_toolkit/Makefile_master setup PROJECT_NAME=<name>`
+  - Or run the bootstrapper directly with Bash:
+    `bash deploy_toolkit/scripts/bootstrap.sh --env conda --name analyst-toolkit --copy-notebook --generate-configs --run-smoke`
+
 ---
 
 ## 🧩 What the Bundle Contains
@@ -24,6 +31,18 @@ This guide shows how to unzip the deployment bundle, scaffold a project, auto‑
 - `deploy_toolkit/templates/**`: configuration, env, VS Code, and notebook templates
 - `deploy_toolkit/scripts/bootstrap.sh`: notebook‑first bootstrapper
 - `deploy_toolkit/tool_kit_resources/**`: docs (this guide, usage, config)
+
+---
+
+## ℹ️ About the deploy_toolkit folder
+
+The `deploy_toolkit/` folder is the versioned source/sample of the deployment bundle. After unzipping into your project, Git ignores the entire `deploy_toolkit/` folder (and zip files) by default via `.gitignore`, so you can leave it in place without cluttering your repo.
+
+Rebuild the bundle locally from this repo (excludes data/ and exports/):
+
+```bash
+make -f deploy_toolkit/Makefile_master package
+```
 
 ---
 
@@ -71,6 +90,14 @@ make notebook
 ```
 
 Then select kernel “Python (<ENV>)” and Run All.
+
+---
+
+Note: If a root `Makefile` is not present in your project, you can always call the master makefile directly:
+
+```bash
+make -f deploy_toolkit/Makefile_master setup PROJECT_NAME=<your_project_name>
+```
 
 ---
 
