@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../repo_img/analyst_toolkit_banner.png" alt="Analyst Toolkit" width="1000"/>
+  <img src="../logo_img/dark_logo_banner.png" alt="Analyst Toolkit" width="900"/>
   <br>
   <em>Analyst Toolkit — QA + Cleaning Engine</em>
 </p>
@@ -18,24 +18,7 @@ This guide walks through how to use the Analyst Toolkit for data cleaning, valid
 
 ## ⚙️ Setup
 
-**🔧 Local Development**
-
-Clone the repo and install locally using the provided `pyproject.toml`:
-
-```bash
-git clone https://github.com/G-Schumacher44/analyst_toolkit.git
-cd analyst_toolkit
-pip install -e .
-
-```
-**🌐 Install Directly via GitHub**
-
-```bash
-pip install git+https://github.com/G-Schumacher44/analyst_toolkit.git
-
-```
-
-This installs the latest version from main. To target a specific branch or tag, append @branchname or @v0.1.0 to the URL.
+For most users, install via the project’s `environment.yml` (created during setup) or use the toolkit’s `requirements.txt` under `deploy_toolkit/`.
 
 ---
 
@@ -109,7 +92,7 @@ final_audit:
 <br>
 
 
-Use `notebooks/00_analyst_toolkit_modular_demo.ipynb` to:
+Use `notebooks/toolkit_template.ipynb` to:
 
 - Run one module at a time
 - Inspect intermediate results
@@ -153,16 +136,9 @@ df_outliers_flagged, results = run_outlier_detection_pipeline(
 <summary><strong>⚙️ Pipeline Execution</strong></summary>
 <br>
 
-Use `notebooks/01_analyst_toolkit_pipeline_demo.ipynb` or run the CLI directly;
+Run the CLI directly or use your project’s notebook;
 
 ### 🔩 For pipeline use with CLI or Notebook 
-
-**In Notebook**
-```python
-from analyst_toolkit.run_toolkit_pipeline import run_full_pipeline
-
-final_df = run_full_pipeline(config_path="config/run_toolkit_config.yaml")
-```
 
 **In CLI**
 
@@ -188,13 +164,7 @@ You can also set `notebook: false` to run in silent (headless) mode for automati
 <br>
 
 
-You can also use the Analyst Toolkit as a package by installing it directly from GitHub — no cloning required:
-
-```bash
-pip install git+https://github.com/G-Schumacher44/analyst_toolkit.git
-```
-
-Then, import and use modules like any Python package:
+You can also import and use modules like any Python package (the toolkit is installed by your environment):
 
 ```python
 from analyst_toolkit.m02_validation.run_validation_pipeline import run_validation_pipeline

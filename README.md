@@ -7,7 +7,7 @@
 <p align="center">
   <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-blue">
   <img alt="Status" src="https://img.shields.io/badge/status-active-brightgreen">
-  <img alt="Version" src="https://img.shields.io/badge/version-v0.2.1-blueviolet">
+  <img alt="Version" src="https://img.shields.io/badge/version-v0.2.5-blueviolet">
   <a href="https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest/download/deploy_toolkit.zip">
     <img alt="Download Bundle" src="https://img.shields.io/badge/download-deploy__toolkit.zip-blue?logo=github">
   </a>
@@ -25,11 +25,10 @@ Starter repo to deploy and use the Analyst Toolkit fast. It includes a deploymen
 ## 🧩 TL;DR
 
 - [`Browse Releases`](https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest)
-- Unzip `deploy_toolkit.zip` at repo root
-- Create env: `conda env create -f environment.yml && conda activate analyst-toolkit`
+- Unzip `deploy_toolkit.zip` at repo root (creates `./deploy_toolkit/`)
 - Put a CSV at repo root or `data/raw/`
-- Run: `make setup PROJECT_NAME=<name> DATASET=auto`
-- Launch: `make notebook`
+- One-liner setup: `make -f deploy_toolkit/Makefile project PROJECT_NAME=<name> DATASET=auto`
+- Then: `conda activate <env>` and `make notebook`
 
 See: `tool_kit_resources/deployment_guide.md`, `tool_kit_resources/usage_guide.md`, `tool_kit_resources/config_guide.md`.
 
@@ -40,13 +39,22 @@ See: `tool_kit_resources/deployment_guide.md`, `tool_kit_resources/usage_guide.m
 - Config Guide: `tool_kit_resources/config_guide.md`
 - Env files: `.env.example`, `environment.yml`, `requirements.txt`
 
-Quick start commands:
+Quick start commands (first run uses `-f`):
 ```bash
-conda env create -f environment.yml
-conda activate analyst-toolkit
-make setup PROJECT_NAME=my_project DATASET=auto
+make -f deploy_toolkit/Makefile project PROJECT_NAME=my_project DATASET=auto
+conda activate my_project   # or the name you set via ENV
 make notebook
 ```
+
+### Troubleshooting
+
+- Missing toolkit targets when running `make`:
+  - First run should call the toolkit makefile explicitly: `make -f deploy_toolkit/Makefile project ...`
+  - After setup, a root delegator `Makefile` is created so plain `make` works.
+- Conda errors creating env:
+  - Use the provided root `environment.yml` (not a mistyped path). Example:
+    `conda env create -f environment.yml -n analyst-toolkit && conda activate analyst-toolkit`
+  - If you want a project‑specific name, pass `-n <your_env_name>`.
 ## 🧭 Orientation & Getting Started
 
 <details>
@@ -78,7 +86,7 @@ Inside `deploy_toolkit.zip` (after unzipping at repo root):
   https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/actions/workflows/release-bundle.yml
   (open the latest successful run and download the artifact)
 
-- Or build locally: `make -f deploy_toolkit/Makefile_master package`
+  - Or build locally: `make -f deploy_toolkit/Makefile package`
 
 </details>
 
@@ -90,10 +98,10 @@ The <code>deploy_toolkit/</code> folder in this repo is the versioned source/sam
 To rebuild the bundle locally from this repo:
 
 ```bash
-make -f deploy_toolkit/Makefile_master package
+make -f deploy_toolkit/Makefile package
 ```
 
-This produces a fresh zip while excluding data/ and exports/.
+This produces `deploy_bundle.zip` at repo root, containing only the `deploy_toolkit/` folder (templates, scripts, Makefile). In GitHub Releases this is renamed to `deploy_toolkit.zip`.
 </details>
 
 <details>
@@ -109,6 +117,14 @@ This produces a fresh zip while excluding data/ and exports/.
 
 <details>
 <summary><strong>🫆 Version Release Notes</strong></summary>
+
+v0.2.5
+- Canonical Makefile in bundle: `deploy_toolkit/Makefile` (removed `Makefile_master`)
+- New one-liner target: `project` (alias of `setup`)
+- Root delegator template auto-copied during setup (plain `make` works after first run)
+- Packaging: zip includes only `deploy_toolkit/`; excludes generated scaffolds and `.DS_Store`
+- Docs aligned: updated guides, fixed image paths, first-run commands use `-f deploy_toolkit/Makefile`
+- CI release keeps asset named `deploy_toolkit.zip`
 
 v0.2.3 * v0.2.4
 - bug fixes in workflow and artifact generation

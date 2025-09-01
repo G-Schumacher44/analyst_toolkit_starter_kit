@@ -18,8 +18,8 @@ This guide shows how to unzip the deployment bundle, scaffold a project, auto‑
 
 Windows
 - Best experience: WSL (Ubuntu). Run all commands inside WSL.
-- Native Windows: use Git Bash + Make + Python 3/Conda on PATH. If `make` is missing, either use the provided `setup.cmd` from CMD/PowerShell, install Make, or call the master makefile explicitly:
-  - `make -f deploy_toolkit/Makefile_master setup PROJECT_NAME=<name>`
+- Native Windows: use Git Bash + Make + Python 3/Conda on PATH. If `make` is missing, either use the provided `setup.cmd` from CMD/PowerShell, install Make, or call the toolkit makefile explicitly:
+  - `make -f deploy_toolkit/Makefile setup PROJECT_NAME=<name>`
   - Or run the bootstrapper directly with Bash:
     `bash deploy_toolkit/scripts/bootstrap.sh --env conda --name analyst-toolkit --copy-notebook --generate-configs --run-smoke`
 
@@ -27,7 +27,7 @@ Windows
 
 ## 🧩 What the Bundle Contains
 
-- `Makefile` (at repo root): convenient targets for setup, wiring data, config inference, packaging
+- `deploy_toolkit/Makefile`: convenient targets for setup, wiring data, config inference, packaging
 - `deploy_toolkit/templates/**`: configuration, env, VS Code, and notebook templates
 - `deploy_toolkit/scripts/bootstrap.sh`: notebook‑first bootstrapper
 - `deploy_toolkit/tool_kit_resources/**`: docs (this guide, usage, config)
@@ -36,19 +36,19 @@ Windows
 
 ## ℹ️ About the deploy_toolkit folder
 
-The `deploy_toolkit/` folder is the versioned source/sample of the deployment bundle. After unzipping into your project, Git ignores the entire `deploy_toolkit/` folder (and zip files) by default via `.gitignore`, so you can leave it in place without cluttering your repo.
+The `deploy_toolkit/` folder is the versioned source/sample of the deployment bundle. After unzipping into your project, Git can ignore the entire `deploy_toolkit/` folder (and zip files) via your project’s `.gitignore`, so you can leave it in place without cluttering your repo.
 
-Rebuild the bundle locally from this repo (excludes data/ and exports/):
+Rebuild the bundle locally from this repo (includes only `deploy_toolkit/` and excludes generated scaffolds):
 
 ```bash
-make -f deploy_toolkit/Makefile_master package
+make -f deploy_toolkit/Makefile package
 ```
 
 ---
 
 ## ⚡ Quick Start
 
-1) Unzip the bundle at your project root (Makefile should be at `./Makefile`).
+1) Unzip the bundle at your project root (you should have a `./deploy_toolkit/` folder).
 2) Add your CSV at repo root (e.g., `./my_data.csv`) or `./data/raw/`.
 3) Activate Conda base:
 
@@ -56,23 +56,23 @@ make -f deploy_toolkit/Makefile_master package
 conda activate base
 ```
 
-4) Run setup (builds env, scaffolds repo, infers configs, wires dataset):
+4) Run setup (builds env, scaffolds repo, infers configs, wires dataset). If you haven’t run setup before, call the toolkit Makefile explicitly with `-f`:
 
 ```bash
-make setup PROJECT_NAME=<your_project_name>
+make -f deploy_toolkit/Makefile project PROJECT_NAME=<your_project_name> DATASET=auto
 ```
 
 Sample initial setup commands:
 
 ```bash
 # Most common (auto-discovers a single CSV at root or data/raw and copies it into data/raw)
-make setup PROJECT_NAME=my_project DATASET=auto
+make -f deploy_toolkit/Makefile project PROJECT_NAME=my_project DATASET=auto
 
 # Prompt to select when multiple CSVs are present
-make setup PROJECT_NAME=my_project DATASET=prompt
+make -f deploy_toolkit/Makefile project PROJECT_NAME=my_project DATASET=prompt
 
 # Explicit env/kernel names (optional override)
-make setup ENV=deploy_toolkit KERNEL_NAME="Python (deploy_toolkit)" PROJECT_NAME=my_project DATASET=auto
+make -f deploy_toolkit/Makefile project ENV=deploy_toolkit KERNEL_NAME="Python (deploy_toolkit)" PROJECT_NAME=my_project DATASET=auto
 ```
 
 Defaults in setup:
@@ -93,10 +93,10 @@ Then select kernel “Python (<ENV>)” and Run All.
 
 ---
 
-Note: If a root `Makefile` is not present in your project, you can always call the master makefile directly:
+Note: If a root `Makefile` is not present in your project yet, you can always call the toolkit makefile directly:
 
 ```bash
-make -f deploy_toolkit/Makefile_master setup PROJECT_NAME=<your_project_name>
+make -f deploy_toolkit/Makefile project PROJECT_NAME=<your_project_name>
 ```
 
 ---
