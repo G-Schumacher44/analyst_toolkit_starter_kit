@@ -1,0 +1,44 @@
+{
+    // It's recommended to let VS Code manage the interpreter path.
+    // Use the "Python: Select Interpreter" command palette option.
+    // "python.defaultInterpreterPath": "/path/to/your/venv/bin/python",
+    "python.formatting.provider": "black",
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.envFile": "${workspaceFolder}/.env",
+    "editor.formatOnSave": true,
+
+    // Sets Gemini as the provider for inline code suggestions.
+    // Requires the "Gemini Code Assist" extension (Insiders/Pre-release).
+    "editor.inlineSuggest.provider": "Google.gemini-code-assist",
+    "python.analysis.extraPaths": [
+        "./src" // Assumes source code is in a 'src' directory
+    ],
+    "python.analysis.exclude": [
+        "exports/**",
+        "data/**"
+    ],
+    // Exclude large or generated directories from the file watcher for performance
+    "files.watcherExclude": {
+        "**/exports/**": true,
+        "**/data/**": true,
+        "**/.ipynb_checkpoints": true,
+        "**/__pycache__": true
+    },
+    // Hide generated directories from the file explorer
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.ipynb_checkpoints": true
+    },
+    // The `jupyter.kernelsFilter` setting was removed as it was project-specific.
+    // It's better to select the kernel from within the Jupyter Notebook interface.
+
+    // -------------------------------------------------------------------------
+    // Language-Specific Overrides
+    // -------------------------------------------------------------------------
+    "[python]": {
+        // Ensure inline suggestions from Gemini are enabled for Python files
+        "editor.inlineSuggest.enabled": true
+    }
+}

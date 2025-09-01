@@ -7,7 +7,7 @@
 <p align="center">
   <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-blue">
   <img alt="Status" src="https://img.shields.io/badge/status-active-brightgreen">
-  <img alt="Version" src="https://img.shields.io/badge/version-v0.2.5-blueviolet">
+  <img alt="Version" src="https://img.shields.io/badge/version-v0.2.1-blueviolet">
   <a href="https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest/download/deploy_toolkit.zip">
     <img alt="Download Bundle" src="https://img.shields.io/badge/download-deploy__toolkit.zip-blue?logo=github">
   </a>
@@ -18,41 +18,34 @@
 
 Starter repo to deploy and use the Analyst Toolkit fast. It includes a deployment bundle (`deploy_toolkit.zip`) and docs to scaffold a project, ingest a CSV, infer starter configs locally, and run via notebook or CLI.
 
-⬇️ [`Download the latest .ZIP bundle release`](https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest/download/deploy_toolkit.zip)
+[`⬇️ Download the latest release`](https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest/download/deploy_toolkit.zip)
 
 👀 [`Checkout the Analyst Toolkit`](https://github.com/G-Schumacher44/analyst_toolkit) on GitHub
 
-### ⏯️ Quick Start
-
-Download the bundle and decompress inside your project folder.
-
-Then run:
-- Quick start commands (first run uses `-f`):
-```bash
-make -f deploy_toolkit/Makefile project PROJECT_NAME=my_project DATASET=auto
-conda activate my_project   # or the name you set via ENV
-make notebook
-```
-If you need assistance in CLI:
-```bash
-make  help
-```
-
 ## 🧩 TL;DR
 
-- Deployment Guide: `tool_kit_resources/deployment_guide.md`
-- Usage Guide: `tool_kit_resources/usage_guide.md`
-- Config Guide: `tool_kit_resources/config_guide.md`
-- Env files: `.env.example`, `environment.yml`, `requirements.txt`
-
-
-- Unzip `deploy_toolkit.zip` at repo root (creates `./deploy_toolkit/`)
+- Unzip `deploy_toolkit.zip` at repo root
+- Create env: `conda env create -f environment.yml && conda activate analyst-toolkit`
 - Put a CSV at repo root or `data/raw/`
-- One-liner setup: `make -f deploy_toolkit/Makefile project PROJECT_NAME=<name> DATASET=auto`
-- Then: `conda activate <env>` and `make notebook`
+- Run: `make setup PROJECT_NAME=<name> DATASET=auto`
+- Launch: `make notebook`
 
-___
+## 🧭 Quick Start
 
+### Quick Links
+
+- [Deployment Guide](tool_kit_resources/deployment_guide.md)
+- [Usage Guide](tool_kit_resources/usage_guide.md)
+- [Config Guide](tool_kit_resources/config_guide.md)
+- Env files: [`.env.example`](../.env.example), `environment.yml`, `requirements.txt`
+
+Quick start commands:
+```bash
+conda env create -f environment.yml
+conda activate analyst-toolkit
+make setup PROJECT_NAME=my_project DATASET=auto
+make notebook
+```
 ## 🧭 Orientation & Getting Started
 
 <details>
@@ -171,50 +164,6 @@ Common targets after unzipping `deploy_toolkit.zip`:
 - `make package`
 
 </details>
-
-___
-
-
-### 🛠 Environment Setup
-
-Install dependencies using one of the following methods:
-
-Option 1 — Conda (recommended)
-```bash
-conda env create -f environment.yml
-conda activate analyst-toolkit
-```
-Option 2 — pip
-```bash
-pip install -r requirements.txt
-```
-
-Notes
-- The toolkit package is installed from GitHub as a dependency.
-- Data and exports are git‑ignored by default; use `.env.example` to set run defaults if needed.
-
-Windows Notes
-- Recommended: use WSL (Ubuntu) and follow Linux steps inside WSL.
-- Native Windows: use Git Bash + Make + Python 3/Conda on PATH.
-  - Install Git for Windows (includes Git Bash)
-  - Install Make (e.g., `choco install make` or `scoop install make`)
-  - Ensure `python` (or `py -3`) works in your shell
-  - Easiest: run `setup.cmd` from CMD/PowerShell (opens Git Bash and runs the bootstrap)
-  - Or run `make setup` at repo root, or call the bootstrapper directly:
-    - `bash deploy_toolkit/scripts/bootstrap.sh --env conda --name analyst-toolkit --copy-notebook --generate-configs --run-smoke`
-  - Packaging is cross‑platform now (no external `zip` required)
-
-___
-
-### Troubleshooting
-
-- Missing toolkit targets when running `make`:
-  - First run should call the toolkit makefile explicitly: `make -f deploy_toolkit/Makefile project ...`
-  - After setup, a root delegator `Makefile` is created so plain `make` works.
-- Conda errors creating env:
-  - Use the provided root `environment.yml` (not a mistyped path). Example:
-    `conda env create -f environment.yml -n analyst-toolkit && conda activate analyst-toolkit`
-  - If you want a project‑specific name, pass `-n <your_env_name>`.
 
 ___
 

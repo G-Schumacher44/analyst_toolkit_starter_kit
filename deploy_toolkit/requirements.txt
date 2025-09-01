@@ -1,0 +1,14 @@
+# Core analyst toolkit (pull latest from GitHub or pin to a tag)
+git+https://github.com/G-Schumacher44/analyst_toolkit.git
+
+# Notebook + analysis stack
+jupyter
+ipykernel
+pandas
+numpy
+seaborn
+matplotlib
+openpyxl
+joblib
+pyyaml
+

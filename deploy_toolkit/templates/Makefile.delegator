@@ -1,0 +1,9 @@
+.DEFAULT_GOAL := help
+MASTER := deploy_toolkit/Makefile
+
+%:
+	@$(MAKE) -f $(MASTER) $@
+
+help:
+	@$(MAKE) -f $(MASTER) help
+

@@ -1,0 +1,45 @@
+{
+    // It's recommended to let VS Code manage the interpreter path.
+    // Use the "Python: Select Interpreter" command palette option.
+    // "python.defaultInterpreterPath": "/path/to/your/venv/bin/python",
+
+    // Formatting & linting
+    "python.formatting.provider": "black",
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "editor.formatOnSave": true,
+
+    // Environment variables
+    "python.envFile": "${workspaceFolder}/.env",
+
+    // Inline code suggestions (optional; requires Gemini Code Assist extension)
+    "editor.inlineSuggest.provider": "Google.gemini-code-assist",
+
+    // Python analysis config
+    "python.analysis.extraPaths": [
+        "./src"
+    ],
+    "python.analysis.exclude": [
+        "exports/**",
+        "data/**"
+    ],
+
+    // Improve performance: exclude generated/large dirs from watcher and explorer
+    "files.watcherExclude": {
+        "**/exports/**": true,
+        "**/data/**": true,
+        "**/.ipynb_checkpoints": true,
+        "**/__pycache__": true
+    },
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.ipynb_checkpoints": true
+    },
+
+    // Language-specific overrides
+    "[python]": {
+        "editor.inlineSuggest.enabled": true
+    }
+}
+

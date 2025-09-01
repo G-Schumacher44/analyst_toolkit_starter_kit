@@ -32,3 +32,9 @@ dist/
 build/
 coverage/
 
+# Deployment bundle
+# If this bundle is unzipped at a repo root,
+# ignore the entire deploy_toolkit folder and zip artifacts
+deploy_toolkit/
+deploy_toolkit.zip
+deploy_bundle.zip
