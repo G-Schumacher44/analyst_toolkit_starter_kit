@@ -7,7 +7,7 @@
 <p align="center">
   <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-blue">
   <img alt="Status" src="https://img.shields.io/badge/status-active-brightgreen">
-  <img alt="Version" src="https://img.shields.io/badge/version-v0.2.5-blueviolet">
+  <img alt="Version" src="https://img.shields.io/badge/version-v0.2.6-blueviolet">
   <a href="https://github.com/G-Schumacher44/analyst_toolkit_starter_kit/releases/latest/download/deploy_toolkit.zip">
     <img alt="Download Bundle" src="https://img.shields.io/badge/download-deploy__toolkit.zip-blue?logo=github">
   </a>
@@ -117,8 +117,8 @@ This produces `deploy_bundle.zip` at repo root, containing only the `deploy_tool
 <summary><strong>🫆 Version Release Notes</strong></summary>
 
 v0.2.6
-- `Templates updated:` Notebook, congifg YAML, requirments.txt, and environment.yml
-- `Documentation updated`: Analysst Toolkit doucments update.
+- `Templates updated:` Notebook, config YAML, requirements.txt, and environment.yml
+- `Documentation updated`: Analyst Toolkit documents update.
 
 v0.2.5
 - Canonical Makefile in bundle: `deploy_toolkit/Makefile` (removed `Makefile_master`)
