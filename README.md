@@ -117,6 +117,10 @@ This produces `deploy_bundle.zip` at repo root, containing only the `deploy_tool
 <summary><strong>🫆 Version Release Notes</strong></summary>
 
 v0.2.6
+- `Templates updated:` Notebook, congifg YAML, requirments.txt, and environment.yml
+- `Documentation updated`: Analysst Toolkit doucments update.
+
+v0.2.5
 - Canonical Makefile in bundle: `deploy_toolkit/Makefile` (removed `Makefile_master`)
 - New one-liner target: `project` (alias of `setup`)
 - Root delegator template auto-copied during setup (plain `make` works after first run)
