@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../logo_img/dark_logo_banner.png" width="900"/>
+  <img src="../repo_files/analyst_toolkit_banner.png" alt="Analyst Toolkit Logo" width="1000"/>
   <br>
   <em>Data QA + Cleaning Engine</em>
 </p>
@@ -17,9 +17,9 @@ The Analyst Toolkit is governed entirely by modular YAML configuration files. Th
 
 Each YAML configuration file serves a specific purpose and is passed to the pipeline via CLI or notebook workflows.
 
-### Downloadable YAML Templates
+### Douwloadable YAML Templates
 
-Templates are included in `deploy_toolkit.zip` after unzipping at repo root.
+>[Download Templates](config.zip)
 ___
 
 ## 📚 YAML Setup Guidebook
@@ -439,16 +439,5 @@ final_audit:
 ---
 
 <p align="center">
-  <a href="../README.md">🏠 <b>Main README</b></a>
-  &nbsp;·&nbsp;
-  <a href="./deployment_guide.md">🚀 <b>Deployment</b></a>
-  &nbsp;·&nbsp;
-  <a href="./usage_guide.md">📘 <b>Usage</b></a>
-  &nbsp;·&nbsp;
-  <a href="./config_guide.md">🧭 <b>Config</b></a>
-  &nbsp;·&nbsp;
-  <a href="./notebook_usage_guide.md">📗 <b>Notebooks</b></a>
-</p>
-<p align="center">
-  <sub>✨ Analyst Toolkit · Starter Kit ✨</sub>
+  🔙 <a href="../README.md"><strong>Return to Project README</strong></a>
 </p>

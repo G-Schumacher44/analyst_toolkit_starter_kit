@@ -25,13 +25,13 @@ outlier_handling:
     __global__:
       strategy: 'none'         # Explicitly specify no handling unless overridden
 
-    example:
+    bill_length_mm:
       strategy: 'clip'         # Caps values at bounds
 
-    example:
+    body_mass_g:
       strategy: 'median'       # Replaces outliers with column median
 
-    example:
+    flipper_length_mm:
       strategy: 'constant'     # Fills with specified value
       fill_value: -999
 

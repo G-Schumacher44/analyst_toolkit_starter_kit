@@ -42,4 +42,6 @@ duplicates:
 
   # 🧼 Optional preview cleanup for schema-variant files
   preview_drop_columns:
-    - "example"
+    - "timestamp"
+    - "script_name"
+    - "user"
