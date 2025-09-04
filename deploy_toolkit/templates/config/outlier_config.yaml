@@ -22,11 +22,11 @@ outlier_detection:
   # ⚙️ Detection rules
   detection_specs:
     # Per-column overrides
-    example:
+    bill_length_mm:
       method: 'iqr'
       iqr_multiplier: 1.5
 
-    example:
+    body_mass_g:
       method: 'zscore'
       zscore_threshold: 3.5
 
@@ -36,7 +36,7 @@ outlier_detection:
       iqr_multiplier: 2.0
 
   # 🚫 Columns to exclude from analysis
-  exclude_columns: ['example']
+  exclude_columns: ['id', 'tag_id']
 
   # 🏷️ Append boolean flags (e.g., 'bill_length_mm_outlier') to output
   append_flags: true

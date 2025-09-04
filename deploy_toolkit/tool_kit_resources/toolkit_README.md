@@ -1,17 +1,26 @@
 <p align="center">
-  <img src="../repo_img/analyst_toolkit_banner.png" width="1000"/>
+  <img src="repo_files/analyst_toolkit_banner.png" alt="Analyst Toolkit Logo" width="1000"/>
   <br>
   <em>Data QA + Cleaning Engine</em>
 </p>
 <p align="center">
   <img alt="MIT License" src="https://img.shields.io/badge/license-MIT-blue">
   <img alt="Status" src="https://img.shields.io/badge/status-stable-brightgreen">
-  <img alt="Version" src="https://img.shields.io/badge/version-v0.1.0-blueviolet">
+  <img alt="Version" src="https://img.shields.io/badge/version-v0.2.0-blueviolet">
 </p>
 
 # 🧪 Analyst Toolkit
 
 A modular, end-to-end data QA and preprocessing pipeline designed for analysts and data scientists.
+
+
+## 👀 Ecosystem Improvements(NEW)
+
+To make getting started even easier, two companion projects are available:
+
+-   [**Deployment Utility**](https://github.com/G-Schumacher44/analyst_toolkit_deployment_utility): A utility to automate project setup, manage configurations, and run pipelines from a simple interface. Spend less time on scaffolding and more time analyzing data.
+
+-   [**Starter Kit (Zip)**](https://github.com/G-Schumacher44/analyst_toolkit_starter_kit): A portable, one-stop project builder. Download the zip to get a ready-to-use project structure with pre-configured templates, making it easier than ever to use the toolkit.
 
 ---
 
@@ -23,18 +32,18 @@ A modular, end-to-end data QA and preprocessing pipeline designed for analysts a
 - YAML-configurable logic per module  
 - Checkpointing and joblib persistence  
 - 🐧 Built using synthetic data from the [dirty_birds_data_generator](https://github.com/G-Schumacher44/dirty_birds_data_generator)
-
+- 📂 [Sample output](exports/sample/)(plots, reports, cleaned dataset)
 
 ---
 
 ### 📚 Quick Start Notebooks
 
 <p align="left">
-  <a href="https://github.com/G-Schumacher44/analyst_toolkit/blob/main/notebooks/00_analyst_toolkit_modular_demo.ipynb" style="margin-right: 10px;">
+  <a href="notebooks/00_analyst_toolkit_modular_demo.ipynb" style="margin-right: 10px;">
     <img alt="Modular Demo" src="https://img.shields.io/badge/Demo%20Notebook-Modular-blue?style=for-the-badge&logo=jupyter" />
   </a>
   &nbsp;&nbsp;
-  <a href="https://github.com/G-Schumacher44/analyst_toolkit/blob/main/notebooks/01_analyst_toolkit_pipeline_demo.ipynb">
+  <a href="notebooks/01_analyst_toolkit_pipeline_demo.ipynb">
     <img alt="Pipeline Demo" src="https://img.shields.io/badge/Demo%20Notebook-Full%20Pipeline-green?style=for-the-badge&logo=python" />
   </a>
 </p>
@@ -62,7 +71,26 @@ The system is human readable and YAML-driven — for your team, stakeholders, an
 </details>
 
 <details>
-<summary><strong>🫆 version release v0.1.2</strong></summary>
+<summary><strong>🫆 version release notes</strong></summary>
+
+**v0.2.0**
+  - **Standardized Configuration Handling**: All modules (`diagnostics`, `validation`, `normalization`, `outliers`, `imputation`, `final_audit`) now intelligently parse their own configuration blocks.
+  - **Simplified Module API**: Module runners can now be called with the full toolkit configuration object, removing the need for manual unpacking in notebooks or scripts. This makes the API consistent across the entire toolkit.
+  - **Notebook & Documentation Updates**: The demo notebook and usage guides have been updated to reflect the simpler, more robust module-calling convention.
+  - **Bug Fixes**: Corrected several minor bugs where modules were not correctly passing or interpreting their configurations, leading to more stable and predictable behavior.
+  - **Packaging**: Corrected `pyproject.toml` to ensure proper package discovery and installation from GitHub.
+
+**v0.1.3**
+  
+  - Refactored Duplicates Module (M04):
+    - Correctly implemented distinct flag and remove modes.
+    - Decoupled detection logic from handling logic for improved robustness and clarity.
+    - Enhanced reporting artifacts for both modes, including flagged datasets and - duplicate clusters.
+
+  - Bug Fixes & Stability:
+    - Resolved critical bug where flag mode was incorrectly removing rows.
+    - Fixed various ImportError and ModuleNotFoundError issues related to project structure and dependencies.
+    - Standardized module calls in notebooks to prevent configuration caching issues.
 
 **v0.1.2**
 - Core module scaffolding complete (M01–M10)
@@ -72,7 +100,7 @@ The system is human readable and YAML-driven — for your team, stakeholders, an
 
 **Plans for v0.2.0**
 - Add dynamic changelog to track transformations end-to-end
-- Reporting systems and exporting refactor 
+- Reporting systems and exporting refractor 
 - Expand visual EDA and statistical audit tools
 - Add streaming-friendly dashboard format (e.g., Streamlit or Voila prototype)
 
@@ -80,9 +108,10 @@ The system is human readable and YAML-driven — for your team, stakeholders, an
 
 <details><summary>📎 Resource Hub Links</summary>
 
-- [🧭 Config Guide](./config_guide.md) — Overview of all YAML configuration files
-- [📘 Usage Guide](./usage_guide.md) — Running the toolkit via notebooks or CLI
-- [📗 Notebook Usage Guide](./notebook_usage_guide.md) — Full breakdown of how each module is used in notebooks
+- [🧭 Config Guide](resource_hub/config_guide.md) — Overview of all YAML configuration files
+- [📦 Config Template Bundle (ZIP)](resource_hub/config.zip) — Full set of starter YAMLs for each module
+- [📘 Usage Guide](resource_hub/usage_guide.md) — Running the toolkit via notebooks or CLI
+- [📗 Notebook Usage Guide](resource_hub/notebook_usage_guide.md) — Full breakdown of how each module is used in notebooks
 </details>
 
 <details>
@@ -119,11 +148,9 @@ The system is human readable and YAML-driven — for your team, stakeholders, an
 │   └── features/                  # Optional engineered features (if extended)
 │
 ├── 📤 exports/
-│   ├── joblib/                    # All checkpointed DataFrames
-│   ├── plots/                     # Auto-generated visualizations (per module)
-│   └── reports/                   # XLSX/CSV audit reports (per module)
+│   └── samples/                   # sample media from a QA run
 │
-├── tool_kit_resources             # Reference, Guidebooks, Documentation
+├── resource_hub                   # Reference, Guidebooks, Documentation
 ├── pyproject.toml                 # Build config for TOML-based packaging
 ├── requirements.txt              # Required packages for pip installs
 ├── .env / .env.template           # Environment variables (if needed)
@@ -136,7 +163,7 @@ The system is human readable and YAML-driven — for your team, stakeholders, an
 <summary><strong>🐧 Dirty Birds: Palmer Penguins Synthetic Dataset v3.5</strong></summary>
 <br>
 
-This toolkit is developed and tested using the <strong>Dirty Birds v3.5</strong> dataset — a fully synthetic recreation of the Palmer Penguins dataset, purposefully enriched with ambiguity, anomalies, and missing data. The dataset is generated using <a href="https://github.com/G-Schumacher44/dirty_birds_data_generator">penguin_synthetic_data_generator.py</a>, a synthetic data generator that simulates viable research data and injects realistic biological variance and field collection noise for robust QA testing.
+This toolkit is developed and tested using the <strong>Dirty Birds v3.5</strong> dataset — a fully synthetic recreation of the Palmer Penguins dataset, purposefully enriched with ambiguity, anomalies, and missing data. The dataset is generated using <a href="https://github.com/G-Schumacher44/dirty_birds_data_generator">penguin_synthetic_data_generator.py</a>, a synthentic data generator that simulates viable research data and injects realistic biological variance and field collection noise for robust QA testing.
 
 
 🐧 Features include:
@@ -156,7 +183,7 @@ Clone the repo and install locally using the provided `pyproject.toml`:
 ```bash
 git clone https://github.com/G-Schumacher44/analyst_toolkit.git
 cd analyst_toolkit
-pip install -e .
+pip install -e .[dev]
 ```
 **🌐 Install Directly via GitHub**
 
@@ -182,7 +209,7 @@ validation:
       expected_columns: [...]
 ```
 
-For full structure and explanation, [📘 Read the Full Configuration Guide](./config_guide.md)
+For full structure and explanation, [📘 Read the Full Configuration Guide](resource_hub/config_guide.md)
 
 
 ---
@@ -201,23 +228,18 @@ from analyst_toolkit.m02_validation.run_validation_pipeline import run_validatio
 from analyst_toolkit.m00_utils.config_loader import load_config
 from analyst_toolkit.m00_utils.load_data import load_csv
 
-# --- Load config and unpack validation settings ---
-val_config = load_config("config/validation_config_template.yaml")
-val_cfg = val_config.get("validation", {})
-notebook_mode = val_config.get("notebook", True)
-run_id = val_config.get("run_id", "demo_run")
+# --- Load config and data ---
+config = load_config("config/validation_config_template.yaml")
+df = load_csv("path/to/your/data.csv")
 
-
-# --- Load raw data from path defined in config ---
-input_path = val_cfg.get("input_path")
-if not input_path:
-    raise ValueError("🛑 No input_path specified in validation config.")
-df_raw = load_csv(input_path)
+# --- Extract global settings ---
+notebook_mode = config.get("notebook", True)
+run_id = config.get("run_id", "demo_run")
 
 # --- Run Validation Module ---
 df_validated = run_validation_pipeline(
-    config=val_cfg,
-    df=df_raw,
+    config=config, # Pass the full config object
+    df=df,
     notebook=notebook_mode,
     run_id=run_id
 )
@@ -225,7 +247,7 @@ df_validated = run_validation_pipeline(
 
 Modules render dashboards inline if `notebook: true` is set in the YAML config.
 
->See [📗 Notebook Usage Guide](./notebook_usage_guide.md) for a full breakdown
+>See [📗 Notebook Usage Guide](resource_hub/notebook_usage_guide.md) for a full breakdown
 
 </details>
 
@@ -268,14 +290,14 @@ modules:
 
 ```
 
->See [📗 Notebook Usage Guide](./notebook_usage_guide.md) for a full breakdown
+>See [📗 Notebook Usage Guide](resource_hub/notebook_usage_guide.md) for a full breakdown
 
 </details>
 
 <details>
 <summary>🔁 Full Pipeline (CLI)</summary>
 
-Run the pipeline in `CLI` using the following command.
+Run the pipeline in `CLI` using the fallowing command.
 
 ```bash
 
@@ -283,7 +305,7 @@ python -m analyst_toolkit.run_toolkit_pipeline --config config/run_toolkit_confi
 
 ```
 
->For full structure and explanation, [📘 Read the Full Usage Guide](./usage_guide.md)
+>For full structure and explanation, [📘 Read the Full Usage Guide](resource_hub/usage_guide.md) 
 
 </details>
 
@@ -293,10 +315,12 @@ python -m analyst_toolkit.run_toolkit_pipeline --config config/run_toolkit_confi
 <div align="center">
   <table>
     <tr>
-      <!-- Dashboard snapshots removed in starter kit (no local images) -->
+      <td><img src="repo_files/db_screen_00.png" width="400"/></td>
+      <td><img src="repo_files/db_screen_1.png" width="400"/></td>
     </tr>
     <tr>
-      <!-- See docs for examples in the main toolkit repo -->
+      <td><img src="repo_files/db_screen_2.png" width="400"/></td>
+      <td><img src="repo_files/db_screen_3.png" width="400"/></td>
     </tr>
   </table>
 </div>
@@ -316,20 +340,3 @@ Generative AI tools (Gemini 2.5-PRO, ChatGPT 4o - 4.1) were used throughout this
 ## 📦 Licensing
 
 This project is licensed under the [MIT License](LICENSE).
-
----
-
-<p align="center">
-  <a href="../README.md">🏠 <b>Main README</b></a>
-  &nbsp;·&nbsp;
-  <a href="./deployment_guide.md">🚀 <b>Deployment</b></a>
-  &nbsp;·&nbsp;
-  <a href="./usage_guide.md">📘 <b>Usage</b></a>
-  &nbsp;·&nbsp;
-  <a href="./config_guide.md">🧭 <b>Config</b></a>
-  &nbsp;·&nbsp;
-  <a href="./notebook_usage_guide.md">📗 <b>Notebooks</b></a>
-</p>
-<p align="center">
-  <sub>✨ Analyst Toolkit · Starter Kit ✨</sub>
-</p>
